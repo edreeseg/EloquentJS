@@ -1,12 +1,12 @@
 // Minimum
 
-const mathMin = (x, y) => {
+const mathMin = function (x, y){
 	if (arguments.length === 0)
 		return Infinity;
 	else if (typeof x !== "number" || typeof y !== "number")
 		return NaN;
 	else
-		x <= y ? x : y;
+		return x <= y ? x : y;
 	}
 	
 // Recursion

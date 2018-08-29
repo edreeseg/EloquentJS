@@ -27,9 +27,9 @@ const dominantDirection = (text) => {  // There should be a way to do this that 
 	let result;
 	let current;
 	const count = {};
-	for (let i = 0; i < text.length; i++) { 
-		if (characterScript(text.codePointAt(i))) {
-			const direction = characterScript(text.codePointAt(i)).direction;
+	for (let char of text) {
+		if (characterScript(char.codePointAt(0))) {
+			const direction = characterScript(char.codePointAt(0)).direction;
 			count.hasOwnProperty(direction) ? count[direction]++ : count[direction] = 1;
 		}
 	}	for (let direction in count){ 
@@ -37,6 +37,5 @@ const dominantDirection = (text) => {  // There should be a way to do this that 
 		result = direction;
 		current = count[direction]
 	}
-	
 	return result;
 }

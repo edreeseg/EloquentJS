@@ -17,7 +17,7 @@ const every = (arr, f) => {
 	for (let i = 0; i < arr.length; i++)
 		if (!f(arr[i])) return false;
 	return true;
-} 
+}
 
 const every = (arr, f) => arr.some(x => !f(x));
 

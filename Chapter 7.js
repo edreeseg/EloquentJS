@@ -23,15 +23,15 @@ function buildGraph(edges){ // Builds an object that indicates which locations c
     return graph;
 }
 
-const roadGraph = buildGraph(roads);
+const roadGraph = buildGraph(roads); // Call function to build object from initial array of strings.
 
 class VillageState{ // Creates a new state indicating where robot currently is, and where parcels are located.
     constructor(place, parcels){
         this.place = place;
         this.parcels = parcels;
     }
-    move(destination){
-        if(!roadGraph[this.place].includes(destination))
+    move(destination){ // This is a method that handles the actual delivery process of the robot.
+        if(!roadGraph[this.place].includes(destination)) // If robot is already where he needs to be, return the current state.
             return this;
         else {
             let parcels = this.parcels.map(p => { // Handles movement of robot.
@@ -42,3 +42,15 @@ class VillageState{ // Creates a new state indicating where robot currently is, 
         }
     }
 }
+
+let first = new VillageState( // New state in which robot is initialized at the Post office, and must deliver parcels to Alice's House.
+    "Post Office",
+    [{place: "Post Office", address:"Alice's House"}]
+);
+let next = first.move("Alice's House");
+
+console.log(next.place);
+
+console.log(next.parcels);
+
+console.log(first.place);
